@@ -28,7 +28,7 @@ const Layout = () => {
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
-						<Route path="/" element={<EntityList types={['people', 'vehicles', 'planets']} />} />
+						<Route path="/home" element={<EntityList types={['people', 'vehicles', 'planets']} />} />
 						<Route path="/favorites" element={<FavoritesList />} /> 
 						<Route path="/vehicle/:uid" element={<VehicleDetail />} />
 						<Route path="/people/:uid" element={<PersonDetail />} />

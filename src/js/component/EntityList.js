@@ -2,6 +2,8 @@ import React,{useEffect,useContext} from "react";
 import { Context } from '../store/appContext'
 import { Link } from "react-router-dom";
 import { Card, Button } from 'react-bootstrap'
+import '../../styles/home.css'
+
 
 const EntityList = ({types}) => {
     const {store, actions} = useContext(Context);
@@ -25,7 +27,7 @@ const EntityList = ({types}) => {
         <div className="container">
             {types.includes('people') && (
                 <>
-                    <h2>People</h2>
+                    <h2 id="title">People</h2>
                     <div className="row">
                         {store.people.map(person => (
                             <div className="col-md-4" key={person.uid}>
@@ -34,9 +36,9 @@ const EntityList = ({types}) => {
                                     <Card.Body>
                                         <Card.Title>{person.name}</Card.Title>  
                                         <Link to={`/people/${person.uid}`}> 
-                                            <Button variant="info">Learn More</Button>
+                                            <Button  className="btn" variant="secondary info">Learn More</Button>
                                         </Link>
-                                        <Button variant="primary" onClick={() => actions.addFavorite(person)}>Add to Favorites</Button>
+                                        <Button variant="danger" onClick={() =>{ actions.addFavorite(person)}}>Add to Favorites</Button>
                                     </Card.Body>
                                 </Card>
                             </div>
@@ -55,9 +57,9 @@ const EntityList = ({types}) => {
                                         <Card.Img variant = 'top' src={vehicle.imageUrl} onError={handleImgError} />
                                         <Card.Title>{vehicle.name}</Card.Title>
                                         <Link to={`/vehicle/${vehicle.uid}`}>
-                                            <Button variant="info">Learn More</Button>
+                                            <Button variant="secondary info">Learn More</Button>
                                         </Link>
-                                        <Button variant="primary" onClick={() => actions.addFavorite(vehicle)}>Add to Favorites</Button>
+                                        <Button variant="warning" onClick={() => {actions.addFavorite(vehicle)}}>Add to Favorites</Button>
                                     </Card.Body>
                                 </Card>
                             </div>
@@ -76,9 +78,9 @@ const EntityList = ({types}) => {
                                      <Card.Img variant = 'top' src={planet.imageUrl} onError={handleImgError}/>
                                         <Card.Title>{planet.name}</Card.Title>
                                         <Link to={`/planets/${planet.uid}`}>
-                                            <Button variant="info">Learn More</Button>
+                                            <Button variant="secondary info">Learn More</Button>
                                         </Link>
-                                        <Button variant="primary" onClick={() => actions.addFavorite(planet)}>Add to Favorites</Button>
+                                        <Button variant="success" onClick={() => {actions.addFavorite(planet)}}>Add to Favorites</Button>
                                     </Card.Body>
                                 </Card>
                             </div>

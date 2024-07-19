@@ -61,14 +61,14 @@ const getState = ({ getStore, getActions, setStore }) => {
                     console.error('Error fetching planets:', error);
                 }
             },
-            addFavorite: item => {
+            addFavorite: (item) => {
                 const store = getStore();
-                if (!store.favorites.some(fav => fav.uid === item.uid)) {
-                    const newFavorites = [...store.favorites,item]
-                    setStore( 'favorites:' , newFavorites);
-                } else {
-                    console.log('Item Already In Favorites')
-                }
+                const isAlreadyFavorite = store.favorites.some(fav => fav.uid === item.uid);
+                if (!isAlreadyFavorite) {
+                setStore({
+                    favorites: [...store.favorites, item]
+                });
+                } else {console.log('Already In Favorites')}
             },
             removeFavorite: uid => {
                 const store = getStore();
